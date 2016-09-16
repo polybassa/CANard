@@ -209,4 +209,7 @@ class DiagMessage:
         return hex(device)
 
     def __str__(self):
-        return "FROM %s TO %s:\t[%s]" % (self.getDeviceNameForAddress(self.id), self.getDeviceNameForAddress(self.destination), ' '.join('{:02X}'.format(x) for x in self.data))
+        
+        retStr = "FROM " + '{0: <10}'.format(self.getDeviceNameForAddress(self.id)) + " TO " + '{0: <10}'.format(self.getDeviceNameForAddress(self.destination)) + ": "
+        return retStr + "%s" % ' '.join('{:02X}'.format(x) for x in self.data)
+        #return "FROM %s TO %s:\t[%s]" % (self.getDeviceNameForAddress(self.id), self.getDeviceNameForAddress(self.destination), ' '.join('{:02X}'.format(x) for x in self.data))

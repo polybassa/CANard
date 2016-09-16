@@ -67,10 +67,11 @@ class Frame(object):
 
     @property
     def data(self):
+        result = []
         # return bytes up to dlc length, pad with zeros
-        data_len = min(self.dlc, len(self._data))
-        result = self.data[:data_len]
-        result.extended([0] * (8 - data_len))
+        for i in range(0, min(self.dlc, len(self._data))):
+            result.append(self._data[i])
+        result = result + [0] * (8 - len(result))
         return result
 
     @data.setter
