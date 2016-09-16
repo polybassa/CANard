@@ -4,7 +4,7 @@ from .. import can
 
 class CantactDev:
     def __init__(self, port):
-        self.ser = serial.Serial(port)
+        self.ser = serial.Serial(port,115200)
 
     def start(self):
         self.ser.write('O\r')
